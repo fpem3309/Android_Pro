@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.view.View;
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private NaverMap naverMap;
 
     Button btn_goboard;
+    Button btn_goYoutube;
+    Button btn_goReact;
 
     /* 마커 선언 및 초기화
     private Marker marker = new Marker();*/
@@ -46,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         btn_goboard = findViewById(R.id.btn_goboard);
+        btn_goYoutube = findViewById(R.id.btn_goYoutube);
+        btn_goReact = findViewById(R.id.btn_goReact);
 
 
         //if(AppHelper.requestQueue != null) {
@@ -60,6 +65,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                Intent intent = new Intent(MainActivity.this, boardActivity.class);
                startActivity(intent);
                //sendRequest();
+           }
+       });
+
+        btn_goYoutube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw"));
+                startActivity(intent);
+            }
+        });
+
+       btn_goReact.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://fpem3309.github.io/nwitter"));
+               startActivity(intent);
            }
        });
 

@@ -16,6 +16,7 @@
 
 
     <!-- 네이버 지도 -->
+
     <com.naver.maps.map.MapView
         android:id="@+id/map_view"
         android:layout_width="match_parent"
@@ -25,11 +26,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <Button
-            android:id="@+id/btn_goboard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="게시판" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btn_goboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="게시판"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.005" />
+
+            <Button
+                android:id="@+id/btn_goYoutube"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유튜브"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.084" />
+
+            <Button
+                android:id="@+id/btn_goReact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="리액트"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.155" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </com.naver.maps.map.MapView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
