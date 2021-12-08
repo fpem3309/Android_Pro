@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     /* 마커 선언 및 초기화
     private Marker marker = new Marker();*/
 
+    BottomNavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         btn_goboard = findViewById(R.id.btn_goboard);
         btn_goYoutube = findViewById(R.id.btn_goYoutube);
         btn_goReact = findViewById(R.id.btn_goReact);
-
 
         //if(AppHelper.requestQueue != null) {
             //AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
