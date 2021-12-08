@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="Item" />
+    <item android:title="위치" />
+    <item android:title="리액트 웹뷰" />
+    <item android:title="빠니보틀" />
     <item android:title="Item" />
     <item android:title="Item" />
 </menu>

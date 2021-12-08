@@ -24,118 +24,43 @@ import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
-
-    private MapView mapView;
-
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-    private FusedLocationSource locationSource;
-    private NaverMap naverMap;
+public class MainActivity extends AppCompatActivity {
 
     Button btn_goboard;
     Button btn_goYoutube;
     Button btn_goReact;
 
-    /* 마커 선언 및 초기화
-    private Marker marker = new Marker();*/
-
     BottomNavigationView nv;
+
+    fragNaver fg1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mapView = findViewById(R.id.map_view);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
-
-        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
-
         btn_goboard = findViewById(R.id.btn_goboard);
         btn_goYoutube = findViewById(R.id.btn_goYoutube);
         btn_goReact = findViewById(R.id.btn_goReact);
 
-        //if(AppHelper.requestQueue != null) {
-            //AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
-        //}
+        fg1 = new fragNaver();
 
-       // 버튼 누르면 게시판
-       btn_goboard.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        // 최초 실행될 fragment 고르기
+        // fragment가 들어갈 공간(frameLayout)의 id
+        // 같이 끼울 Fragment 객체
 
-               Intent intent = new Intent(MainActivity.this, boardActivity.class);
-               startActivity(intent);
-               //sendRequest();
-           }
-       });
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fg1).commit();
+        nv = findViewById(R.id.bottomNavigationView);
 
-        btn_goYoutube.setOnClickListener(new View.OnClickListener() {
+        // navigation에서 선택한 메뉴에 따라 fragment 바꿔끼우기
+        nv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw"));
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                return true;
             }
         });
 
-       btn_goReact.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://fpem3309.github.io/nwitter"));
-               startActivity(intent);
-           }
-       });
-
     }
 
-
-    public void println(String data) {
-        //textView.setText(data +"\n");
-    }
-
-    private void setMark(Marker marker,  double lat, double lng, int resourceID)
-    {
-        //원근감 표시
-        marker.setIconPerspectiveEnabled(true);
-        //아이콘 지정
-        marker.setIcon(OverlayImage.fromResource(resourceID));
-        //마커의 투명도
-        marker.setAlpha(0.8f);
-        //마커 위치
-        marker.setPosition(new LatLng(lat, lng));
-        //마커 우선순위
-        marker.setZIndex(10);
-        //마커 표시
-        marker.setMap(naverMap);
-    }
-
-
-    //위치정보 권한 설정
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,  @NonNull int[] grantResults) {
-        if (locationSource.onRequestPermissionsResult(
-                requestCode, permissions, grantResults)) {
-            return;
-        }
-        super.onRequestPermissionsResult(
-                requestCode, permissions, grantResults);
-    }
-
-    @Override
-    public void onMapReady(@NonNull NaverMap naverMap) {
-        this.naverMap = naverMap;
-        // NaverMap 객체 받아서 NaverMap 객체에 위치 소스 지정
-        naverMap.setLocationSource(locationSource);
-        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-
-        UiSettings uiSettings = naverMap.getUiSettings();
-        uiSettings.setCompassEnabled(true); // 나침반
-        uiSettings.setScaleBarEnabled(true); // 거리
-        uiSettings.setZoomControlEnabled(true); // 줌
-        uiSettings.setLocationButtonEnabled(true); // 내가 있는곳
-
-
-    }
 }
