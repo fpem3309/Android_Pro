@@ -3,6 +3,7 @@ package com.kmg.naver;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -35,15 +36,26 @@ public class fragNaver extends Fragment implements OnMapReadyCallback {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mapView = getView().findViewById(R.id.map_view);
-        mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
+//        mapView = (MapView)getView().findViewById(R.id.map_view);
+//        mapView.onCreate(savedInstanceState);
+//        mapView.getMapAsync(this);
 
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         //if(AppHelper.requestQueue != null) {
         //AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
         //}
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_frag_naver, container, false);
+
+        mapView = (MapView) v.findViewById(R.id.map_view);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
+        return v;
     }
 
     public void println(String data) {
