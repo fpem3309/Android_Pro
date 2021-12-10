@@ -2,6 +2,7 @@ package com.kmg.naver;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView nv;
 
-    fragNaver fg1;
+    Fragment_1 fg1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +44,14 @@ public class MainActivity extends AppCompatActivity {
         btn_goboard = findViewById(R.id.btn_goboard);
         btn_goYoutube = findViewById(R.id.btn_goYoutube);
         btn_goReact = findViewById(R.id.btn_goReact);
-
-        fg1 = new fragNaver();
+        fg1 = new Fragment_1();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fg1).commit();
 
         // 최초 실행될 fragment 고르기
         // fragment가 들어갈 공간(frameLayout)의 id
         // 같이 끼울 Fragment 객체
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fg1).commit();
         nv = findViewById(R.id.bottomNavigationView);
-
-        // navigation에서 선택한 메뉴에 따라 fragment 바꿔끼우기
-        nv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                return true;
-            }
-        });
 
     }
 
