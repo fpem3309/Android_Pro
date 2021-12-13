@@ -13,11 +13,10 @@
     tools:context=".MainActivity"
     tools:menu="@menu/activity_menu">
 
-
     <!-- 네이버 지도 -->
 
-    <com.naver.maps.map.MapView
-        android:id="@+id/map_view"
+    <FrameLayout
+        android:id="@+id/frameLayouit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,60 +24,65 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.naver.maps.map.MapView
+            android:id="@+id/map_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_goboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="게시판"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.005" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_goYoutube"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="유튜브"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.074" />
+                <Button
+                    android:id="@+id/btn_goboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="게시판"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.005" />
 
-            <Button
-                android:id="@+id/btn_goReact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="리액트"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.144" />
+                <Button
+                    android:id="@+id/btn_goYoutube"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="유튜브"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.074" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                app:backgroundTint="#FBFBFB"
-                app:labelVisibilityMode="labeled"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.998"
-                app:menu="@menu/activity_menu"
-                app:itemIconTint="@drawable/menu_selector_color"
-                app:itemTextColor="@drawable/menu_selector_color"
-                />
+                <Button
+                    android:id="@+id/btn_goReact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="리액트"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.144" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigationView"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    app:backgroundTint="#FBFBFB"
+                    app:itemIconTint="@drawable/menu_selector_color"
+                    app:itemTextColor="@drawable/menu_selector_color"
+                    app:labelVisibilityMode="labeled"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.998"
+                    app:menu="@menu/activity_menu" />
 
-    </com.naver.maps.map.MapView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.naver.maps.map.MapView>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
