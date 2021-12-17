@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_goReact;
 
     BottomNavigationView nv;
+    Fragment_1 fg1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         fragmentManager = getSupportFragmentManager();
-        fragment_1 = new Fragment_1();
+        fg1 = new Fragment_1();
 
         transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frameLayouit, fragment_1).commitAllowingStateLoss();
+        transaction.replace(R.id.frameLayouit, fg1).commitAllowingStateLoss();
 
         nv = findViewById(R.id.bottomNavigationView);
 
@@ -49,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()){
-                    case R.id.tab1:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fragment_1).commit();
+                    case R.id.tab2:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fg1).commit();
                         Toast.makeText(getApplicationContext(),"Web 선택!",Toast.LENGTH_SHORT).show();
                         break;
                 }
