@@ -50,9 +50,24 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId()){
+                    case R.id.tab1:
+                        Toast.makeText(getApplicationContext(),"1번 선택!",Toast.LENGTH_SHORT).show();
+                        break;
+
                     case R.id.tab2:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fg1).commit();
-                        Toast.makeText(getApplicationContext(),"Web 선택!",Toast.LENGTH_SHORT).show();
+                        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fg1).commit();
+                        Toast.makeText(getApplicationContext(),"2번 선택!",Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.tab3:
+                        Toast.makeText(getApplicationContext(),"3번 선택!",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.tab4:
+                        Toast.makeText(getApplicationContext(),"4번 선택!",Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.tab5:
+                        Toast.makeText(getApplicationContext(),"5번 선택!",Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;

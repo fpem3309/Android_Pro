@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="위치" />
+    <item
+        android:id="@+id/tab1"
+        android:title="위치" />
     <item
         android:id="@+id/tab2"
         android:title="리액트 웹뷰" />
-    <item android:title="빠니보틀" />
-    <item android:title="Item" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/tab3"
+        android:title="빠니보틀" />
+    <item
+        android:id="@+id/tab4"
+        android:title="Item" />
+    <item
+        android:id="@+id/tab5"
+        android:title="Item" />
 </menu>
