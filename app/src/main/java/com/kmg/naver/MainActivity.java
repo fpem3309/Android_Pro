@@ -2,8 +2,6 @@ package com.kmg.naver;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
@@ -13,19 +11,15 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
-
 public class MainActivity extends AppCompatActivity {
-    private FragmentManager fragmentManager;
-    private Fragment_1 fragment_1;
-    private FragmentTransaction transaction;
+
+    Fragment_1 fragment_1;
 
     Button btn_goboard;
     Button btn_goYoutube;
     Button btn_goReact;
 
     BottomNavigationView nv;
-    Fragment_1 fg1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +30,9 @@ public class MainActivity extends AppCompatActivity {
         btn_goYoutube = findViewById(R.id.btn_goYoutube);
         btn_goReact = findViewById(R.id.btn_goReact);
 
+        fragment_1 = new Fragment_1();
 
-        fragmentManager = getSupportFragmentManager();
-        fg1 = new Fragment_1();
-
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frameLayouit, fg1).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_1).commit();
 
         nv = findViewById(R.id.bottomNavigationView);
 
@@ -55,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.tab2:
-                        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout,fg1).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_1).commit();
                         Toast.makeText(getApplicationContext(),"2번 선택!",Toast.LENGTH_SHORT).show();
                         break;
+
                     case R.id.tab3:
                         Toast.makeText(getApplicationContext(),"3번 선택!",Toast.LENGTH_SHORT).show();
                         break;

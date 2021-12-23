@@ -16,7 +16,7 @@
     <!-- 네이버 지도 -->
 
     <FrameLayout
-        android:id="@+id/frameLayouit"
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
