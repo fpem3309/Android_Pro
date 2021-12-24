@@ -14,10 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     Fragment_1 fragment_1;
-
-    Button btn_goboard;
-    Button btn_goYoutube;
-    Button btn_goReact;
+    Fragment_2 fragment_2;
 
     BottomNavigationView nv;
 
@@ -26,13 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_goboard = findViewById(R.id.btn_goboard);
-        btn_goYoutube = findViewById(R.id.btn_goYoutube);
-        btn_goReact = findViewById(R.id.btn_goReact);
-
         fragment_1 = new Fragment_1();
+        fragment_2 = new Fragment_2();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_1).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_2).commit();
 
         nv = findViewById(R.id.bottomNavigationView);
 
@@ -42,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()){
                     case R.id.tab1:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment_2).commit();
                         Toast.makeText(getApplicationContext(),"1번 선택!",Toast.LENGTH_SHORT).show();
                         break;
 

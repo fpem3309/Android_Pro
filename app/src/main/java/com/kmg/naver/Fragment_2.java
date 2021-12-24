@@ -1,6 +1,9 @@
 package com.kmg.naver;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,19 +27,18 @@ public class Fragment_2 extends Fragment implements OnMapReadyCallback {
     private NaverMap naverMap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    mapView = findViewById(R.id.map_view);
+        View view = inflater.inflate(R.layout.fragment_2, container, false);
+        mapView = view.findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
-    locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+    return view;
+    }
 
-
-    private void setMark(Marker marker, double lat, double lng, int resourceID)
-    {
+    private void setMark(Marker marker, double lat, double lng, int resourceID) {
         //원근감 표시
         marker.setIconPerspectiveEnabled(true);
         //아이콘 지정
@@ -54,7 +56,7 @@ public class Fragment_2 extends Fragment implements OnMapReadyCallback {
     //위치정보 권한 설정
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,  @NonNull int[] grantResults) {
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (locationSource.onRequestPermissionsResult(
                 requestCode, permissions, grantResults)) {
             return;
