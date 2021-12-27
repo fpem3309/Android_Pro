@@ -29,6 +29,7 @@ public class newboard extends AppCompatActivity {
     private EditText edt_msm_no, edt_msnb_subject, edt_msnb_content;
     private ImageButton btn_add;
 
+    Fragment_3 fragment_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class newboard extends AppCompatActivity {
 
         String url ="http://172.30.1.23:8081/smartcar/api/noticeInsert";
         requestQueue = Volley.newRequestQueue(this);
+
+        fragment_3 = new Fragment_3();
 
         stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -70,6 +73,8 @@ public class newboard extends AppCompatActivity {
                 temp.put("msnb_subject",edt_msnb_subject.getText().toString());    // put - 인덱스따라 추가가아니라 집어넣는느낌
                 temp.put("msnb_content",edt_msnb_content.getText().toString());
                 return temp;
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment_3).commit();
+
             }
         };
 
@@ -77,10 +82,11 @@ public class newboard extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(newboard.this,Fragment_3.class);
-                activity.startActivity(intent);
-
-                requestQueue.add(stringRequest);
+//                Intent intent = new Intent(newboard.this,Fragment_3.class);
+//                activity.startActivity(intent);
+//
+//                requestQueue.add(stringRequest);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment_3).commit();
 
             }
         });
