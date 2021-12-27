@@ -77,8 +77,8 @@ public class newboard extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(newboard.this,boardActivity.class);
-                startActivity(intent);
+                Intent intent = new Intent(newboard.this,Fragment_3.class);
+                activity.startActivity(intent);
 
                 requestQueue.add(stringRequest);
 
