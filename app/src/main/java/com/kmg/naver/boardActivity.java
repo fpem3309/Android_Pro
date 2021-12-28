@@ -60,7 +60,7 @@ public class boardActivity extends AppCompatActivity {
         //msnb_no = findViewById(R.id.msnb_no);
         //msm_no = findViewById(R.id.msm_no);
         msnb_subject = findViewById(R.id.msm_subject);
-        msnb_content = findViewById(R.id.msnb_content);
+        msnb_content = findViewById(R.id.newb_content);
         msnb_date = findViewById(R.id.msnb_date);
         msnb_no = findViewById(R.id.msnb_no);
 

@@ -1,7 +1,6 @@
 package com.kmg.naver;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -99,7 +98,7 @@ public class boardAdapter extends RecyclerView.Adapter <boardAdapter.boardVH>  {
             super(itemView);
 
             subjectTxt = itemView.findViewById(R.id.msm_subject);
-            contentTxt = itemView.findViewById(R.id.msnb_content);
+            contentTxt = itemView.findViewById(R.id.newb_content);
             dateTxt = itemView.findViewById(R.id.msnb_date);
             no = itemView.findViewById(R.id.msnb_no);
 

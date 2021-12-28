@@ -107,7 +107,7 @@
             android:background="#FFFFFF">
 
             <TextView
-                android:id="@+id/msnb_content"
+                android:id="@+id/newb_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="16sp"

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -22,75 +23,39 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class newboard extends AppCompatActivity {
-    RequestQueue requestQueue;  // 서버와 통신할 통로
-    StringRequest stringRequest;    // 내가 전송할 데이터
-
-
-    private EditText edt_msm_no, edt_msnb_subject, edt_msnb_content;
-    private ImageButton btn_add;
-
-    Fragment_3 fragment_3;
+    EditText newb_subject,newb_content,newb_name;
+    ImageButton btn_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newboard);
 
-        edt_msm_no = findViewById(R.id.msm_no);
-        edt_msnb_subject = findViewById(R.id.msnb_subject);
-        edt_msnb_content = findViewById(R.id.msnb_content);
+        newb_subject = findViewById(R.id.newb_subject);
+        newb_content = findViewById(R.id.newb_content);
+        newb_name = findViewById(R.id.newb_name);
         btn_add = findViewById(R.id.btn_add);
-
-        String url ="http://172.30.1.23:8081/smartcar/api/noticeInsert";
-        requestQueue = Volley.newRequestQueue(this);
-
-        fragment_3 = new Fragment_3();
-
-        stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                // 서버에서 돌려준 응답을 처리
-                if (response.equals("1")){
-                    finish();
-                }else {
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // error.toString(); 하면 에러 찍힘
-            }
-        }){
-            // StringRequest 객체 범위
-
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                // 전송할 데이터 Key, Value 로 셋팅하기
-                Map<String, String> temp = new HashMap<>();
-                temp.put("msm_no","1");
-                temp.put("msnb_subject",edt_msnb_subject.getText().toString());    // put - 인덱스따라 추가가아니라 집어넣는느낌
-                temp.put("msnb_content",edt_msnb_content.getText().toString());
-                return temp;
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment_3).commit();
-
-            }
-        };
-
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(newboard.this,Fragment_3.class);
-//                activity.startActivity(intent);
-//
-//                requestQueue.add(stringRequest);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment_3).commit();
+                String name = newb_name.getText().toString();
+                String subject = newb_subject.getText().toString();
+                String content = newb_content.getText().toString();
+
+                Intent intent = new Intent(getApplicationContext(),boardActivity.class);
+                intent.putExtra("subject",subject);
+                intent.putExtra("content",content);
+                intent.putExtra("name",name);
+                setResult(RESULT_OK, intent);
+                finish();
 
             }
+
         });
+
     }
+
 
 }
 

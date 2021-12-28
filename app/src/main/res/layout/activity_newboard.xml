@@ -8,7 +8,7 @@
     tools:context=".newboard">
 
     <EditText
-        android:id="@+id/msnb_content"
+        android:id="@+id/newb_content"
 
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/msm_no"
+        android:id="@+id/newb_name"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <EditText
-        android:id="@+id/msnb_subject"
+        android:id="@+id/newb_subject"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:ems="10"
